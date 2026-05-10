@@ -1,0 +1,132 @@
+@use '../../../styles/_variables' as vars;
+
+.driver-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: vars.$card-background;
+  border: 1px solid rgba(vars.$text-secondary, 0.2);
+  border-radius: vars.$radius-md;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  padding: 1rem;
+  min-width: 280px;
+  max-width: 320px;
+  margin-top: 0.5rem;
+  
+  // Arrow pointing up
+  &::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid vars.$card-background;
+  }
+  
+  // Border for arrow
+  &::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid rgba(vars.$text-secondary, 0.2);
+  }
+
+  .tooltip-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(vars.$text-secondary, 0.1);
+
+    .driver-icon {
+      font-size: 1.5rem;
+      color: vars.$secondary-color;
+    }
+
+    h4 {
+      margin: 0;
+      color: vars.$text-primary;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+  }
+
+  .tooltip-content {
+    .tooltip-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .label {
+        color: vars.$text-secondary;
+        font-size: 0.85rem;
+        font-weight: 500;
+        min-width: 80px;
+      }
+
+      .value {
+        color: vars.$text-primary;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-align: right;
+        flex: 1;
+
+        &.status-badge {
+          display: inline-block;
+          padding: 0.25rem 0.5rem;
+          border-radius: 12px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+
+          &.status-active {
+            background: rgba(vars.$status-active, 0.1);
+            color: vars.$status-active;
+            border: 1px solid rgba(vars.$status-active, 0.2);
+          }
+
+          &.status-inactive {
+            background: rgba(vars.$status-inactive, 0.1);
+            color: vars.$status-inactive;
+            border: 1px solid rgba(vars.$status-inactive, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Animation for tooltip appearance
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.driver-tooltip {
+  animation: tooltipFadeIn 700ms ease-out;
+}

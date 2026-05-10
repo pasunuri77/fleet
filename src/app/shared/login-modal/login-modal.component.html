@@ -1,0 +1,54 @@
+<div class="login-modal-overlay" 
+     *ngIf="isVisible" 
+     (click)="onBackdropClick($event)">
+  <div class="login-modal">
+    <div class="modal-header">
+      <h2>Login to Fleet Management</h2>
+      <button class="close-btn" (click)="closeModal()" title="Close">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    
+    <form class="login-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email"
+          [(ngModel)]="formData.email"
+          required
+          placeholder="Enter your email"
+          autocomplete="email"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password"
+          [(ngModel)]="formData.password"
+          required
+          placeholder="Enter your password"
+          autocomplete="current-password"
+        />
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" class="login-btn">
+          Login
+        </button>
+        <button type="button" class="cancel-btn" (click)="closeModal()">
+          Cancel
+        </button>
+      </div>
+    </form>
+    
+    <div class="modal-footer">
+      <p>Don't have an account? <a href="#" class="signup-link">Sign up</a></p>
+      <p><a href="#" class="forgot-link">Forgot password?</a></p>
+    </div>
+  </div>
+</div>

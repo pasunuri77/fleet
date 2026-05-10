@@ -1,0 +1,71 @@
+<div class="dashboard-container">
+
+
+  <div>
+    <app-charts></app-charts>
+  </div>
+  <h2 class="dashboard-title">Fleet Overview</h2>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="material-symbols-outlined stat-icon">
+        local_shipping
+      </span>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ totalVehicles }}</h3>
+        <p class="stat-label">Total Vehicles</p>
+      </div>
+    </div>
+
+    <div class="stat-card active">
+      <span class="material-symbols-outlined stat-icon">
+        check_circle
+      </span>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ activeVehicles }}</h3>
+        <p class="stat-label">Active</p>
+      </div>
+    </div>
+
+    <div class="stat-card maintenance">
+      <span class="material-symbols-outlined stat-icon">
+        build
+      </span>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ maintenanceVehicles }}</h3>
+        <p class="stat-label">Maintenance</p>
+      </div>
+    </div>
+
+    <!-- <div class="stat-card inactive">
+      <span class="material-symbols-outlined stat-icon">
+        pause_circle
+      </span>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ inactiveVehicles }}</h3>
+        <p class="stat-label">Inactive</p>
+      </div>
+    </div> -->
+  </div>
+
+  <div class="dashboard-content">
+    <div class="info-section">
+      <h3>Recent Activity</h3>
+      <div class="activity-item">
+        <span class="material-symbols-outlined activity-icon">build</span>
+        <span class="activity-text">Van 2 scheduled for maintenance</span>
+        <span class="activity-time">2 hours ago</span>
+      </div>
+      <div class="activity-item">
+        <span class="material-symbols-outlined activity-icon">check_circle</span>
+        <span class="activity-text">Truck 1 completed delivery route</span>
+        <span class="activity-time">5 hours ago</span>
+      </div>
+      <div class="activity-item">
+        <span class="material-symbols-outlined activity-icon">warning</span>
+        <span class="activity-text">Car 4 requires inspection</span>
+        <span class="activity-time">1 day ago</span>
+      </div>
+    </div>
+  </div>
+</div>

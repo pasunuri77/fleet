@@ -1,0 +1,52 @@
+<div class="drivers-list-container">
+  <div class="page-header">
+    <h2 class="page-title">Drivers</h2>
+    <button class="add-driver-btn" (click)="openDriverRegistrationModal()" title="Add New Driver">
+      <span class="material-symbols-outlined">add</span>
+      Add Driver
+    </button>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="drivers-table" *ngIf="drivers$ | async as drivers">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>License Number</th>
+          <th>Status</th>
+          <th>Vehicle Assigned</th>
+          <th>Last Login</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let driver of drivers" class="driver-row">
+          <td class="id-cell">{{ driver.id }}</td>
+          <td class="name-cell">{{ driver.name }}</td>
+          <td class="license-cell">{{ driver.licenseNumber }}</td>
+          <td class="status-cell">
+            <span class="status-badge" [ngClass]="getStatusClass(driver.status)">
+              {{ driver.status }}
+            </span>
+          </td>
+          <td class="vehicle-cell">
+            {{ getVehicleAssignment(driver.vehicleAssigned) }}
+          </td>
+          <td class="login-cell">
+            {{ driver.lastLogin ? (driver.lastLogin | date:'shortDate') : 'Never' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="empty-state" *ngIf="(drivers$ | async)?.length === 0">
+    <div class="empty-icon">
+      <span class="material-symbols-outlined">person</span>
+    </div>
+    <h3>No drivers found</h3>
+    <p>There are no drivers in the system at the moment.</p>
+  </div>
+  
+  <app-driver-registration-modal></app-driver-registration-modal>
+</div>

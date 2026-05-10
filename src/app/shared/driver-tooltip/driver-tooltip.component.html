@@ -1,0 +1,40 @@
+<div class="driver-tooltip" *ngIf="driver">
+  <div class="tooltip-header">
+    <span class="material-symbols-outlined driver-icon">person</span>
+    <h4>{{ driver.name }}</h4>
+  </div>
+  
+  <div class="tooltip-content">
+    <div class="tooltip-row">
+      <span class="label">ID:</span>
+      <span class="value">{{ driver.id }}</span>
+    </div>
+    
+    <div class="tooltip-row">
+      <span class="label">License:</span>
+      <span class="value">{{ driver.licenseNumber }}</span>
+    </div>
+    
+    <div class="tooltip-row">
+      <span class="label">Status:</span>
+      <span class="value status-badge" [ngClass]="getStatusClass(driver.status)">
+        {{ driver.status }}
+      </span>
+    </div>
+    
+    <div class="tooltip-row" *ngIf="driver.phone">
+      <span class="label">Phone:</span>
+      <span class="value">{{ driver.phone }}</span>
+    </div>
+    
+    <div class="tooltip-row" *ngIf="driver.email">
+      <span class="label">Email:</span>
+      <span class="value">{{ driver.email }}</span>
+    </div>
+    
+    <div class="tooltip-row">
+      <span class="label">Last Login:</span>
+      <span class="value">{{ driver.lastLogin ? (driver.lastLogin | date:'shortDate') : 'Never' }}</span>
+    </div>
+  </div>
+</div>

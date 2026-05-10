@@ -1,0 +1,215 @@
+@use '../../../styles/_variables' as vars;
+
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.login-modal {
+  background: white;
+  border-radius: vars.$radius-lg;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 400px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideIn 0.3s ease-out;
+  position: relative;
+  z-index: 1001;
+  margin: 0;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(vars.$text-secondary, 0.1);
+
+  h2 {
+    margin: 0;
+    color: vars.$text-primary;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: vars.$radius-sm;
+    transition: vars.$transition-fast;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: rgba(vars.$text-secondary, 0.1);
+    }
+
+    .material-symbols-outlined {
+      font-size: 1.5rem;
+      color: vars.$text-secondary;
+    }
+  }
+}
+
+.login-form {
+  padding: 1.5rem;
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: vars.$text-primary;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 2px solid rgba(vars.$text-secondary, 0.2);
+      border-radius: vars.$radius-md;
+      font-size: 1rem;
+      transition: vars.$transition-fast;
+      background: vars.$card-background;
+      color: vars.$text-primary;
+
+      &:focus {
+        outline: none;
+        border-color: vars.$secondary-color;
+        box-shadow: 0 0 0 3px rgba(vars.$secondary-color, 0.1);
+      }
+
+      &::placeholder {
+        color: rgba(vars.$text-secondary, 0.6);
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    .login-btn {
+      flex: 1;
+      padding: 0.75rem 1.5rem;
+      background: vars.$secondary-color;
+      color: white;
+      border: none;
+      border-radius: vars.$radius-md;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: vars.$transition-fast;
+
+      &:hover {
+        // background: color.adjust(vars.$secondary-color, $lightness: -10%);
+        transform: translateY(-1px);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    .cancel-btn {
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: vars.$text-secondary;
+      border: 2px solid rgba(vars.$text-secondary, 0.2);
+      border-radius: vars.$radius-md;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: vars.$transition-fast;
+
+      &:hover {
+        background-color: rgba(vars.$text-secondary, 0.1);
+        border-color: rgba(vars.$text-secondary, 0.3);
+      }
+    }
+  }
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(vars.$text-secondary, 0.1);
+  background-color: rgba(vars.$text-secondary, 0.02);
+  text-align: center;
+
+  p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+    color: vars.$text-secondary;
+
+    a {
+      color: vars.$secondary-color;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .login-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .modal-header {
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+
+  .login-form {
+    padding: 1rem;
+
+    .form-actions {
+      flex-direction: column;
+
+      .login-btn,
+      .cancel-btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .modal-footer {
+    padding: 0.75rem 1rem;
+  }
+}

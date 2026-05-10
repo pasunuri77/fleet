@@ -1,0 +1,12 @@
+<nav class="sidebar" [class.collapsed]="isCollapsed">
+  <ul class="nav-list">
+    <li class="nav-item" *ngFor="let item of navItems">
+      <a class="nav-link" routerLink="{{ item.path }}" routerLinkActive="active" [title]="isCollapsed ? item.label : ''">
+        <span class="material-symbols-outlined">{{ item.icon }}</span>
+        <span class="nav-label" *ngIf="!isCollapsed">{{ item.label }}</span>
+      </a>
+    </li>
+  </ul>
+
+
+</nav>

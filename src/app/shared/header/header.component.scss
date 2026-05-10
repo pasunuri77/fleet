@@ -1,0 +1,136 @@
+@use '../../../styles/_variables' as vars;
+
+.app-header {
+  background-color: vars.$primary-color;
+  color: vars.$text-white;
+  padding: 0;
+  height: 80px;
+  box-shadow: vars.$shadow-md;
+  border-bottom: 3px solid vars.$secondary-color;
+  position: relative;
+  z-index: 200;
+
+  .header-content {
+    padding: vars.$spacing-sm vars.$spacing-lg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.7rem;
+    height: 100%;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+
+    .hamburger-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: vars.$radius-sm;
+      transition: vars.$transition-slow;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .material-symbols-outlined {
+        font-size: 1.5rem;
+        color: vars.$text-white;
+      }
+    }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    button {
+      align-items: center;
+      display: flex;
+      gap: 3px;
+      border-radius: 5px;
+      font-size: 15px;
+    }
+
+    .user-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: vars.$radius-sm;
+      transition: 1500ms ease-in-out;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .user-avatar {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .user-name {
+        color: vars.$text-white;
+        font-weight: 500;
+      }
+
+      .material-symbols-outlined {
+        font-size: 1.5rem;
+        color: vars.$text-white;
+      }
+    }
+
+    .notification-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: vars.$radius-sm;
+      transition: 1500ms ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .material-symbols-outlined {
+        font-size: 1.5rem;
+        color: vars.$text-white;
+      }
+    }
+  }
+
+  .app-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-sm;
+
+    .material-symbols-outlined {
+      font-size: 1.8rem;
+      color: vars.$secondary-color;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-md;
+  }
+}

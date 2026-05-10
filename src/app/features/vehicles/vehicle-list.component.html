@@ -1,0 +1,70 @@
+<div class="vehicle-list-container">
+  <div class="page-header">
+    <h2 class="page-title">Vehicle Fleet</h2>
+    <button class="add-vehicle-btn" (click)="openVehicleRegistrationModal()" title="Add New Vehicle">
+      <span class="material-symbols-outlined">add</span>
+      Add Vehicle
+    </button>
+  </div>
+
+  <div class="table-wrapper">
+    <table class="vehicle-table" *ngIf="vehiclesWithDrivers$ | async as vehicles">
+      <thead>
+        <tr>
+          <th>Icon</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Status</th>
+          <th>Driver</th>
+          <th>Last Maintenance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of vehicles" class="vehicle-row">
+          <td class="icon-cell">
+            <span class="material-symbols-outlined vehicle-icon-outlined">
+              {{ getVehicleIcon(vehicle.type) }}
+            </span>
+          </td>
+          <td class="id-cell">{{ vehicle.id }}</td>
+          <td class="name-cell">{{ vehicle.name }}</td>
+          <td class="type-cell">{{ vehicle.type }}</td>
+          <td class="status-cell">
+            <span class="status-badge" [ngClass]="getStatusClass(vehicle.status)">
+              {{ vehicle.status }}
+            </span>
+          </td>
+          <td class="driver-cell">
+            <div 
+              class="driver-name-wrapper"
+              (mouseenter)="onDriverHover(vehicle.driver)"
+              (mouseleave)="onDriverLeave()"
+              *ngIf="vehicle.driver"
+            >
+              {{ getDriverName(vehicle.driver) }}
+              <app-driver-tooltip 
+                *ngIf="hoveredDriver?.id === vehicle.driver.id"
+                [driver]="vehicle.driver"
+              ></app-driver-tooltip>
+            </div>
+            <span *ngIf="!vehicle.driver">{{ getDriverName(vehicle.driver) }}</span>
+          </td>
+          <td class="maintenance-cell">
+            {{ vehicle.lastMaintenance || 'N/A' }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="empty-state" *ngIf="(vehiclesWithDrivers$ | async)?.length === 0">
+    <div class="empty-icon">
+      <span class="material-symbols-outlined">local_shipping</span>
+    </div>
+    <h3>No vehicles found</h3>
+    <p>There are no vehicles in the fleet at the moment.</p>
+  </div>
+  
+  <app-vehicle-registration-modal></app-vehicle-registration-modal>
+</div>

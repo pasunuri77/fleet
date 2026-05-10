@@ -1,0 +1,247 @@
+@use '../../../styles/_variables' as vars;
+
+.vehicle-list-container {
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: vars.$spacing-md;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .page-title {
+      color: vars.$text-primary;
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 600;
+    }
+
+    .add-vehicle-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: vars.$secondary-color;
+      color: white;
+      border: none;
+      border-radius: vars.$radius-md;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: vars.$transition-fast;
+      box-shadow: vars.$shadow-sm;
+
+      &:hover {
+        // background: color.adjust(vars.$secondary-color, $lightness: -10%);
+        transform: translateY(-1px);
+        box-shadow: vars.$shadow-md;
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+
+      .material-symbols-outlined {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border-radius: vars.$radius-md;
+    border: 1px solid rgba(vars.$text-secondary, 0.2);
+    background: vars.$card-background;
+    box-shadow: vars.$shadow-md;
+  }
+
+  .vehicle-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      background: rgba(vars.$secondary-color, 0.05);
+      border-bottom: 2px solid vars.$secondary-color;
+
+      th {
+        padding: vars.$spacing-md vars.$spacing-sm;
+        text-align: left;
+        font-weight: 600;
+        color: vars.$text-primary;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom: 1px solid rgba(vars.$text-secondary, 0.1);
+      }
+    }
+
+    tbody {
+      .vehicle-row {
+        transition: vars.$transition-fast;
+        border-bottom: 1px solid rgba(vars.$text-secondary, 0.1);
+
+        &:hover {
+          background: rgba(vars.$secondary-color, 0.02);
+        }
+
+        td {
+          padding: 1rem 1rem;
+          vertical-align: middle;
+          border-bottom: 1px solid rgba(107, 114, 128, 0.05);
+          width: 10px;
+          display: table-cell;
+          align-content: center;
+        }
+
+        .icon-cell {
+          width: 60px;
+          text-align: center;
+
+          .material-symbols-outlined {
+            font-size: 1.5rem;
+            color: vars.$text-secondary;
+            border-radius: vars.$radius-sm;
+          }
+        }
+
+        .id-cell {
+          font-weight: 600;
+          color: vars.$text-primary;
+          width: 80px;
+        }
+
+        .name-cell {
+          font-weight: 500;
+          color: vars.$text-primary;
+          min-width: 120px;
+        }
+
+        .type-cell {
+          color: vars.$text-secondary;
+          width: 100px;
+        }
+
+        .status-cell {
+          width: 120px;
+
+          .status-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+
+            &.status-active {
+              background: rgba(vars.$status-active, 0.1);
+              color: vars.$status-active;
+              border: 1px solid rgba(vars.$status-active, 0.2);
+            }
+
+            &.status-maintenance {
+              background: rgba(vars.$status-maintenance, 0.1);
+              color: vars.$status-maintenance;
+              border: 1px solid rgba(vars.$status-maintenance, 0.2);
+            }
+
+            &.status-inactive {
+              background: rgba(vars.$status-inactive, 0.1);
+              color: vars.$status-inactive;
+              border: 1px solid rgba(vars.$status-inactive, 0.2);
+            }
+          }
+        }
+
+        .driver-cell {
+          color: vars.$text-secondary;
+          font-size: 0.9rem;
+          min-width: 120px;
+          font-weight: 500;
+
+          .driver-name-wrapper {
+            position: relative;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: vars.$radius-sm;
+            transition: vars.$transition-fast;
+
+            &:hover {
+              background: rgba(vars.$secondary-color, 0.1);
+              color: vars.$secondary-color;
+            }
+          }
+        }
+
+        .maintenance-cell {
+          color: vars.$text-secondary;
+          font-size: 0.9rem;
+          min-width: 120px;
+        }
+      }
+    }
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: vars.$spacing-xl;
+    background: vars.$card-background;
+    border-radius: vars.$radius-md;
+    box-shadow: vars.$shadow-md;
+
+    .empty-icon {
+      font-size: 3rem;
+      margin-bottom: vars.$spacing-md;
+      opacity: 0.6;
+      color: vars.$secondary-color;
+    }
+
+    h3 {
+      color: vars.$text-primary;
+      margin: 0 0 vars.$spacing-sm 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: vars.$text-secondary;
+      margin: 0;
+      font-size: 1rem;
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .vehicle-list-container {
+    padding: 1rem;
+
+    .page-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+
+      .page-title {
+        font-size: 1.5rem;
+      }
+
+      .add-vehicle-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    .vehicle-table {
+      thead th {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.8rem;
+      }
+
+      tbody td {
+        padding: 0.75rem 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<header class="app-header">
+  <div class="header-content">
+    <div class="header-left">
+      <h1 class="app-title">{{ title }}</h1>
+      <button class="hamburger-btn" (click)="toggleSidebar()" title="Toggle Sidebar">
+        <span class="material-symbols-outlined">{{ isSidebarCollapsed ? 'menu_open' : 'menu' }}</span>
+      </button>
+
+    </div>
+    <div class="header-right">
+      <button class="user-btn" title="User Profile">
+        <span class="material-symbols-outlined">account_circle</span>
+      </button>
+      <button (click)="openLoginModal()"><span class="material-symbols-outlined">
+          login
+        </span>Login</button>
+    </div>
+
+  </div>
+
+  <app-login-modal></app-login-modal>
+</header>

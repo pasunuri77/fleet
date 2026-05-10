@@ -1,0 +1,61 @@
+@use '../../../styles/_variables' as vars;
+
+.charts-title {
+    color: vars.$text-primary;
+    font-weight: 600;
+    margin-bottom: vars.$spacing-md;
+    margin-top: 0;
+}
+
+.charts-wrapper {
+    display: flex;
+    gap: vars.$spacing-lg;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 100%;
+}
+
+.chart-container {
+    background: vars.$card-background;
+    border: 1px solid rgba(vars.$text-secondary, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 280px;
+    width: 340px;
+    padding: vars.$spacing-md;
+    border-radius: vars.$radius-lg;
+    flex-shrink: 0;
+    box-shadow: vars.$shadow-md;
+    transition: vars.$transition-normal;
+
+    &:hover {
+        box-shadow: vars.$shadow-hover;
+        transform: translateY(-2px);
+    }
+
+    .chart-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: vars.$spacing-sm vars.$spacing-md;
+        margin-bottom: vars.$spacing-sm;
+        border-bottom: 1px solid rgba(vars.$text-secondary, 0.1);
+
+        h2 {
+            margin: 0;
+            font-size: 1rem;
+            color: vars.$text-primary;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    canvas {
+        max-width: 100%;
+        max-height: 200px;
+    }
+}

@@ -1,1 +1,85 @@
-/* You can add global styles to this file, and also import other style files */
+// Import theme variables
+@use './styles/_variables' as vars;
+@use 'sass:color';
+
+// Include theming for Angular Material with `mat.theme()`.
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: 'Google',
+      density: 0,
+    )
+  );
+}
+
+body {
+  color-scheme: light;
+  background-color: vars.$background-color;
+  color: vars.$text-primary;
+  font-family: 'Google', sans-serif;
+  margin: 0;
+  height: 100%;
+  line-height: 1.6;
+}
+
+// Global styles
+* {
+  box-sizing: border-box;
+}
+
+// Material Symbols font sizing
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+// Common card styles
+.card {
+  background: vars.$card-background;
+  border-radius: vars.$radius-md;
+  box-shadow: vars.$shadow-md;
+  transition: vars.$transition-normal;
+  
+  &:hover {
+    box-shadow: vars.$shadow-hover;
+    transform: translateY(-2px);
+  }
+}
+
+// Button styles
+.btn {
+  padding: vars.$spacing-xs vars.$spacing-md;
+  border-radius: vars.$radius-sm;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: vars.$transition-fast;
+  
+  &.btn-primary {
+    background: vars.$secondary-color;
+    color: vars.$text-white;
+    
+    &:hover {
+      background: color.adjust(vars.$secondary-color, $lightness: -10%);
+    }
+  }
+  
+  &.btn-accent {
+    background: vars.$accent-color;
+    color: vars.$text-white;
+    
+    &:hover {
+      background: color.adjust(vars.$accent-color, $lightness: -10%);
+    }
+  }
+}

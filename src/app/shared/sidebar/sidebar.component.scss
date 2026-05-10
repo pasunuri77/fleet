@@ -1,0 +1,87 @@
+@use '../../../styles/_variables' as vars;
+@use 'sass:color';
+
+.sidebar {
+  background-color: vars.$primary-color;
+  width: 250px;
+  height: calc(100vh - 80px);
+  left: 0;
+  top: 80px;
+  box-shadow: vars.$shadow-md;
+  z-index: 100;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+
+  &.collapsed {
+    width: 70px;
+  }
+
+  .nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-item {
+    margin: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: vars.$spacing-md vars.$spacing-lg;
+    color: vars.$text-white;
+    text-decoration: none;
+    transition: vars.$transition-fast;
+    border-left: 3px solid transparent;
+    gap: vars.$spacing-sm;
+    position: relative;
+
+    &:hover {
+      background-color: color.adjust(vars.$primary-color, $lightness: -5%);
+    }
+
+    &.active {
+      background-color: color.adjust(vars.$primary-color, $lightness: -8%);
+      border-left-color: vars.$secondary-color;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: vars.$secondary-color;
+      }
+    }
+  }
+
+  .material-symbols-outlined {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: vars.$transition-fast;
+  }
+
+  .nav-link.active .material-symbols-outlined {
+    color: vars.$secondary-color;
+  }
+
+  .nav-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .nav-link.active .nav-label {
+    color: vars.$text-white;
+  }
+
+  // Collapsed state styles
+  &.collapsed {
+    .nav-link {
+      justify-content: center;
+      padding: vars.$spacing-md;
+    }
+  }
+}
