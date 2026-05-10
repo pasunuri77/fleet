@@ -1,10 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
-import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [LoginModalComponent], // Used in template for login modal
+  imports: [],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
@@ -12,10 +12,10 @@ export class HeaderComponent {
   title = 'Fleet Management';
   isSidebarCollapsed = false;
   
-  @ViewChild(LoginModalComponent) loginModal!: LoginModalComponent;
+  constructor(private router: Router) {}
 
-  openLoginModal(): void {
-    this.loginModal.openModal();
+  logout(): void {
+    this.router.navigate(['/login']);
   }
 
   toggleSidebar(): void {

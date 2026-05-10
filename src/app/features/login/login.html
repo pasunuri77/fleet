@@ -1,0 +1,141 @@
+<div class="login-container">
+  <!-- Left Section - Login Form -->
+  <div class="login-section">
+    <div class="login-box">
+      <div class="login-header">
+        <h1>Fleet Management</h1>
+        <p>Sign in to your account</p>
+      </div>
+
+      <form (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label for="username">Username or Email</label>
+          <input
+            type="text"
+            id="username"
+            [(ngModel)]="username"
+            name="username"
+            placeholder="Enter your username"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Enter your password"
+            class="form-input"
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="login-button"
+          [disabled]="isLoading || !username || !password"
+        >
+          <span *ngIf="!isLoading">Sign In</span>
+          <span *ngIf="isLoading" class="spinner"></span>
+        </button>
+      </form>
+
+      <div class="login-footer">
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right Section - Fleet Info -->
+  <div class="info-section">
+    <div class="info-content">
+      <div class="info-header">
+        <svg class="fleet-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z" fill="currentColor"/>
+          <circle cx="9" cy="11" r="2" fill="currentColor"/>
+          <circle cx="15" cy="11" r="2" fill="currentColor"/>
+          <path d="M7 14h10v2H7z" fill="currentColor"/>
+        </svg>
+        <h2>Fleet Management</h2>
+      </div>
+
+      <div class="info-stats">
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="stat-text">
+            <p class="stat-number">248</p>
+            <p class="stat-label">Active Vehicles</p>
+          </div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="stat-text">
+            <p class="stat-number">156</p>
+            <p class="stat-label">Active Drivers</p>
+          </div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2V17zm4 0h-2V7h2V17zm4 0h-2v-11h2V17z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="stat-text">
+            <p class="stat-number">94%</p>
+            <p class="stat-label">Fleet Efficiency</p>
+          </div>
+        </div>
+
+        <div class="stat-item">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="stat-text">
+            <p class="stat-number">12</p>
+            <p class="stat-label">Maintenance Due</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-features">
+        <h3>Key Features</h3>
+        <ul>
+          <li>
+            <svg class="feature-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+            </svg>
+            Real-time vehicle tracking
+          </li>
+          <li>
+            <svg class="feature-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+            </svg>
+            Driver performance analytics
+          </li>
+          <li>
+            <svg class="feature-check" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="currentColor"/>
+            </svg>
+            Maintenance scheduling
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -15,6 +15,8 @@ export interface LoginFormData {
   styleUrl: './login-modal.component.scss'
 })
 export class LoginModalComponent {
+  @Output() loginSuccess = new EventEmitter<LoginFormData>();
+
   isVisible = false;
   formData: LoginFormData = {
     email: '',
@@ -35,6 +37,7 @@ export class LoginModalComponent {
     if (this.validateForm()) {
       console.log('Login attempt:', this.formData);
       // Here you would typically call an authentication service
+      this.loginSuccess.emit(this.formData);
       this.closeModal();
     }
   }

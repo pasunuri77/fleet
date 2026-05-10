@@ -11,7 +11,7 @@
     <table class="vehicle-table" *ngIf="vehiclesWithDrivers$ | async as vehicles">
       <thead>
         <tr>
-          <th>Icon</th>
+          <!-- <th>Icon</th> -->
           <th>ID</th>
           <th>Name</th>
           <th>Type</th>
@@ -22,11 +22,11 @@
       </thead>
       <tbody>
         <tr *ngFor="let vehicle of vehicles" class="vehicle-row">
-          <td class="icon-cell">
+          <!-- <td class="icon-cell">
             <span class="material-symbols-outlined vehicle-icon-outlined">
               {{ getVehicleIcon(vehicle.type) }}
             </span>
-          </td>
+          </td> -->
           <td class="id-cell">{{ vehicle.id }}</td>
           <td class="name-cell">{{ vehicle.name }}</td>
           <td class="type-cell">{{ vehicle.type }}</td>
