@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   isCollapsed = false;
   
   navItems = [
-    { path: '/', label: 'Dashboard', icon: 'dashboard' },
+    { path: '/dashboard', label: 'Dashboard', icon: 'dashboard' },
     { path: '/vehicles', label: 'Vehicles', icon: 'local_shipping' },
     { path: '/drivers', label: 'Drivers', icon: 'person' }, 
     { path: '/settings', label: 'Settings', icon: 'settings' }
