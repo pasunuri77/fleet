@@ -15,7 +15,7 @@ export class HeaderComponent {
   constructor(private router: Router) {}
 
   logout(): void {
-    this.router.navigate(['/login']);
+    this.router.navigateByUrl('/login');
   }
 
   toggleSidebar(): void {
